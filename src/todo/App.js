@@ -2,6 +2,7 @@ import React from 'react';
 import InputTodo from './components/Input';
 import ButtonTodo from './components/Button';
 import ListTodo from './components/List';
+import LayoutTodo from './components/Layout';
 
 export default class TodoApp extends React.PureComponent {
     constructor(props) {
@@ -38,21 +39,55 @@ export default class TodoApp extends React.PureComponent {
         })
     }
 
+    removeItem = (id) => {
+        // xoa bo cong viec trong state dataLists theo dung id truyen len
+        // cap nhat lai state dataLists
+        const items = this.state.dataLists.filter(item => item.id !== id);
+        if(items !== undefined) {
+            this.setState({
+                ...this.state,
+                dataLists: items
+            })
+        }
+    }
+
+    finishedItem = id => {
+        // can cap nhat thuoc tinh "done" nam trong object thuoc state dataLists - phu thuoc vao id truyen len
+        // ko duoc phep mat cong viec hay bi them cong viec
+        /* 
+        [{id: 1,name: 'hoc css',done: false},{id: 2,name: 'hoc html',done: false}]
+        */
+       const newData = this.state.dataLists.map(item => {
+           return item.id === id ? {...item, done: !item.done} : item;
+       })
+       if(newData !== undefined){
+            this.setState({
+                ...this.state,
+                dataLists: newData
+            })
+       }
+    }
+
     render(){
-        console.log(this.state.dataLists);
+        //console.log(this.state.dataLists);
         return (
             <>
-                <InputTodo
-                    type="text"
-                    name="todo"
-                    change={this.changeNameWork}
-                />
-                <ButtonTodo
-                    type="button"
-                    name="buttonTodo"
-                    click={this.addTodo}
-                > Them cong viec</ButtonTodo>
-                <ListTodo />
+                <LayoutTodo>
+                    <InputTodo
+                        type="text"
+                        name="todo"
+                        change={this.changeNameWork}
+                    />
+                    <ButtonTodo
+                        name="buttonTodo"
+                        click={this.addTodo}
+                    > Them cong viec</ButtonTodo>
+                    <ListTodo
+                        listWorks={this.state.dataLists}
+                        remove={this.removeItem}
+                        finished={this.finishedItem}
+                    />
+                </LayoutTodo>
             </>
         )
     }
