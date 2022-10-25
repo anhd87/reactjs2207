@@ -10,7 +10,7 @@ const GlobalComponent = () => {
                         title="Nhiem benh"
                         bordered={true}
                     >
-                        <p>Moi nhiem: {this.props.benh}</p>
+                        <p>Moi nhiem: 1223242</p>
                         <p>Tong ca nhiem: 115</p>
                     </Card>
                 </Col>

@@ -11,9 +11,9 @@ export default class AppCovid extends React.PureComponent{
             dataVirus: {}
         }
     }
-    async componentDidMount(){
-        // call api o day -  cap nhat state o day
-    }
+    // async componentDidMount(){
+    //     // call api o day -  cap nhat state o day
+    // }
     render() {
         return(
             <Row>
