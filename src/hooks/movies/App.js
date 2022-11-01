@@ -35,7 +35,7 @@ const AppMovies = () => {
             setLoading(false);
         }
         getDataFromApi();
-    }, [page]); // page : dependencies (neu bi thay doi thi useEffect se chay lai)
+    }, [page, clickPage]); // page : dependencies (neu bi thay doi thi useEffect se chay lai)
 
     if(loading){
         return <Skeleton active />
