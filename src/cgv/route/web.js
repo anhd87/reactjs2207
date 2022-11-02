@@ -9,6 +9,7 @@ const PopularPage = React.lazy(() => import('../pages/Popular'));
 const SearchPage  = React.lazy(() => import('../pages/Search'));
 const UpcomingPage = React.lazy(() => import('../pages/Upcoming'));
 const DetailPage = React.lazy(() => import('../pages/Detail'));
+const LoginPage = React.lazy(() => import('../pages/Login'));
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,14 @@ const router = createBrowserRouter([
         element: (
             <React.Suspense fallback={<LoadingMovie/>}>
                 <DetailPage/>
+            </React.Suspense>
+        )
+    },
+    {
+        path:"login",
+        element: (
+            <React.Suspense fallback={<LoadingMovie/>}>
+                <LoginPage/>
             </React.Suspense>
         )
     }

@@ -12,7 +12,14 @@ const getDataMovieById = async (id = 0) => {
     const result = response.status === 200 ? response.data : {};
     return result;
 }
+const searchMoviesByName = async (nameMovie = '', page = 1) => {
+    const url = `https://api.themoviedb.org/3/search/movie?query=${nameMovie}&api_key=cfe422613b250f702980a3bbf9e90716&page=${page}`;
+    const response = await axios.get(url);
+    const result = response.status === 200 ? response.data : {};
+    return result;
+}
 export const api = {
     getDataMoviePopular,
-    getDataMovieById
+    getDataMovieById,
+    searchMoviesByName
 }
